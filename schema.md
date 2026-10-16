@@ -24,3 +24,19 @@ pour la même chose, et le comptage par catégorie est faux. Renommer « Soupe �
 ne pourrait pas non plus exister. Avec une table `categorie` et une clé étrangère,
 le nom est écrit une seule fois, chaque plat y renvoie, et la base refuse
 une catégorie inexistante.
+
+## Étape 03
+
+CATEGORIE(**id_categorie**, nom)
+
+PLAT(**id_plat**, nom, prix, #id_categorie)
+
+COMMANDE(**id_commande**, date_commande)  (nouveau)
+
+LIGNE_COMMANDE(**#id_commande**, **#id_plat**, quantite)  (nouveau)
+
+La quantité se place dans `ligne_commande`, la table d'association. Elle dépend
+des deux à la fois : « 2 Romazava dans la commande 1 ». Dans `commande`, il faudrait
+une quantité par plat, alors qu'une commande en contient plusieurs. Dans `plat`,
+elle serait la même pour toutes les commandes. Seul le couple (commande, plat)
+détermine une quantité.
